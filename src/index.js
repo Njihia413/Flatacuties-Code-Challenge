@@ -1,5 +1,8 @@
 // Your code here
+
 const baseUrl = " http://localhost:3000/characters";
+
+
 //Fetch Character Names
 function fetchCharacterNames () {
     return fetch(baseUrl)
@@ -20,7 +23,6 @@ fetchCharacterNames().then(characters => {
         renderCharacterNames(character);
     })
 })
-
 
 
 //Fetching character details
@@ -46,11 +48,37 @@ function renderCharacterDetails(character) {
     const charVotes = document.getElementById("vote-count");
     charVotes.innerText = character.votes
 
-    //characterInfo.appendChild(charName, charImg, charVotes);
+    updateVoteCount(character);
 }
 
+//Form Submission and Updating Votes
+document.getElementById("votes-form").addEventListener("submit", (event) => {
+    event.preventDefault(); 
+    const votesForm = event.target;
+    const votes = document.getElementById("vote-count")
+    votes.innerText = parseInt(votesForm.votes.value) + parseInt(votes.innerText);
+    votesForm.reset();
+})
+
+//Update Votes to the DOM and backend
+// function updateVoteCount (id) {
+//     return fetch(baseUrl + `/${id}`, {
+//         method: "PATCH",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(id)
+//     })
+//     .then(response => response.json())
+//     .then(character => console.log(character))
+// }
 
 
+
+//Reset Button Functionality
+document.getElementById("reset-btn").addEventListener("click", () => {
+    document.getElementById("vote-count").innerText = 0;
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchCharacterNames();
