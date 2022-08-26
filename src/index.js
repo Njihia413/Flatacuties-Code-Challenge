@@ -48,7 +48,7 @@ function renderCharacterDetails(character) {
     const charVotes = document.getElementById("vote-count");
     charVotes.innerText = character.votes
 
-    updateVoteCount(character);
+    //updateVoteCount(character);
 }
 
 //Form Submission and Updating Votes
@@ -72,7 +72,6 @@ document.getElementById("votes-form").addEventListener("submit", (event) => {
 //     .then(response => response.json())
 //     .then(character => console.log(character))
 // }
-
 
 
 //Reset Button Functionality
