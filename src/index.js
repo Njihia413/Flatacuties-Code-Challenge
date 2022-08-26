@@ -48,7 +48,6 @@ function renderCharacterDetails(character) {
     const charVotes = document.getElementById("vote-count");
     charVotes.innerText = character.votes
 
-    //updateVoteCount(character);
 }
 
 //Form Submission and Updating Votes
@@ -59,20 +58,6 @@ document.getElementById("votes-form").addEventListener("submit", (event) => {
     votes.innerText = parseInt(votesForm.votes.value) + parseInt(votes.innerText);
     votesForm.reset();
 })
-
-//Update Votes to the DOM and backend
-// function updateVoteCount (id) {
-//     return fetch(baseUrl + `/${id}`, {
-//         method: "PATCH",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(id)
-//     })
-//     .then(response => response.json())
-//     .then(character => console.log(character))
-// }
-
 
 //Reset Button Functionality
 document.getElementById("reset-btn").addEventListener("click", () => {
